@@ -1,0 +1,38 @@
+<head>
+	<title>
+		Post:Detail
+	</title>
+</head>
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-sm-6 col-sm-offset-3">
+{% if instance.image %}
+<img src='{{ instance.image.url }}' class="img-responsive" />
+{% endif %}
+<h1>{{instance.title}}</h1>
+<small class="text-muted">Created On : {{instance.timestamp | timesince}} ago</small><br>
+<small class="text-muted">Last Updated : {{instance.updated | timesince}} ago</small><br>
+
+<h3><small class="text-muted">Author : {{instance.user}}</small></h3><br>
+<div class="col-sm-12">
+<div class="content-markdown detail-im">
+
+{{instance.content}}<br>
+</div>
+</div>
+<br/>
+<br/>
+
+<div class="fb-like" data-href="{{ request.build_absolute_uri}}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="true"></div>
+
+<div class="fb-follow" data-href="https://www.facebook.com/zuck" data-layout="box_count" data-size="large" data-show-faces="true"></div>
+
+
+<div class="fb-comments" data-href="{{ request.build_absolute_uri}}" data-numposts="5"></div>
+
+
+{% endblock content %}
